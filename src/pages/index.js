@@ -8,7 +8,7 @@ import SEO from "../components/seo"
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
-    <h1>SPACE!</h1>
+    <h1>Today's Image</h1>
     <Astronomy />
   </Layout>
 )

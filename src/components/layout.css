@@ -332,6 +332,10 @@ hgroup {
   padding-top: 0;
   margin-bottom: 1.45rem;
 }
+footer {
+  text-align: center;
+  padding: 0.5rem;
+}
 ul {
   margin-left: 1.45rem;
   margin-right: 0;
