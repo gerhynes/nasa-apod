@@ -12,7 +12,6 @@ export default function Astronomy() {
       const result = await axios.get(
         "https://api.nasa.gov/planetary/apod?api_key=TrOS4UtSVKBOtq0fzZL5PBrjUdtB4oDbgt5DFDdc"
       )
-      console.log(result.data)
       const { copyright, date, explanation, title, url } = result.data
 
       setCopyright(copyright)
