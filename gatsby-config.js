@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `NASA Astronomy Picture of the Day`,
+    description: `An app for viewing NASA's Astronomy Picture of the Day.`,
+    author: `Ger Hynes`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
