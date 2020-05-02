@@ -25,13 +25,14 @@ export default function Astronomy() {
 
   return (
     <div className="Astronomy">
-      <h2>{title}</h2>
+      <h2>Today's Image</h2>
+      <h3>{title}</h3>
       <img src={imageUrl} alt={title} />
-      <h3>
+      <h4>
         <span>{copyright}</span>
         {` `}
         <span>{date}</span>
-      </h3>
+      </h4>
       <p>{explanation}</p>
     </div>
   )
