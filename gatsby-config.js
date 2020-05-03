@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `NASA Astronomy Picture of the Day`,
+    title: `NASA's Astronomy Picture of the Day`,
     description: `An app for viewing NASA's Astronomy Picture of the Day.`,
     author: `Ger Hynes`,
   },
