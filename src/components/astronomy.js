@@ -43,8 +43,9 @@ export default function Astronomy() {
           customInput={<DatePickerInput />}
         />
       </div>
-      <h2>The image for {printDate(date)} is</h2>
-      <h3>{title}</h3>
+      <h2>
+        The image for {printDate(date)} is {title}
+      </h2>
       <img src={imageUrl} alt={title} />
       <h4>
         <span>{copyright}</span>
