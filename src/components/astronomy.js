@@ -13,6 +13,8 @@ export default function Astronomy() {
   const [startDate, setStartDate] = useState(new Date())
   const searchDate = format(startDate, "yyyy-MM-dd")
 
+  const printDate = date => date.split("-").reverse().join("-")
+
   useEffect(() => {
     const fetchImage = async () => {
       const result = await axios.get(
@@ -37,13 +39,13 @@ export default function Astronomy() {
         selected={startDate}
         onChange={date => setStartDate(date)}
       />
-      <h2>The image for {date.split("-").reverse().join("-")} is</h2>
+      <h2>The image for {printDate(date)} is</h2>
       <h3>{title}</h3>
       <img src={imageUrl} alt={title} />
       <h4>
         <span>{copyright}</span>
         {` `}
-        <span>{date.split("-").reverse().join("-")}</span>
+        <span>{printDate(date)}</span>
       </h4>
       <p>{explanation}</p>
     </div>
