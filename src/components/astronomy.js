@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react"
 import DatePicker from "react-datepicker"
-import "react-datepicker/dist/react-datepicker.css"
 import axios from "axios"
 import { format } from "date-fns"
+import "./astronomy.css"
+import "react-datepicker/dist/react-datepicker.css"
 
 export default function Astronomy() {
   const [copyright, setCopyright] = useState("")
@@ -33,12 +34,15 @@ export default function Astronomy() {
 
   return (
     <div className="Astronomy">
-      <h3>Choose a Date</h3>
-      <DatePicker
-        dateFormat="dd/MM/yyyy"
-        selected={startDate}
-        onChange={date => setStartDate(date)}
-      />
+      <div className="DatePicker">
+        <h3 className="DatePicker-title">Choose a date</h3>
+        <DatePicker
+          dateFormat="dd/MM/yyyy"
+          selected={startDate}
+          onChange={date => setStartDate(date)}
+          customInput={<DatePickerInput />}
+        />
+      </div>
       <h2>The image for {printDate(date)} is</h2>
       <h3>{title}</h3>
       <img src={imageUrl} alt={title} />
@@ -51,3 +55,9 @@ export default function Astronomy() {
     </div>
   )
 }
+
+const DatePickerInput = ({ value, onClick }) => (
+  <button className="datepicker-input-btn" onClick={onClick}>
+    {value}
+  </button>
+)

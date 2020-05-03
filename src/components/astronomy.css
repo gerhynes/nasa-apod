@@ -1,0 +1,18 @@
+.DatePicker {
+  margin-bottom: 2.5rem;
+}
+
+.DatePicker-title {
+  display: inline;
+  margin-right: 1rem;
+}
+
+.datepicker-input-btn {
+  cursor: pointer;
+  padding: 5px 15px;
+  border: 0;
+  border-radius: 4px;
+  background-color: #105bd8;
+  font: inherit;
+  color: #fff;
+}
