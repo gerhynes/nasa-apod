@@ -20,7 +20,7 @@ export default function Astronomy() {
   const printDate = date => date.split("-").reverse().join("-")
 
   useEffect(() => {
-    const fetchImage = async () => {
+    const fetchMedia = async () => {
       const result = await axios.get(
         `https://api.nasa.gov/planetary/apod?api_key=TrOS4UtSVKBOtq0fzZL5PBrjUdtB4oDbgt5DFDdc&date=${searchDate}`
       )
@@ -40,7 +40,7 @@ export default function Astronomy() {
       setMediaUrl(url)
       setMediaType(media_type)
     }
-    fetchImage()
+    fetchMedia()
   }, [
     copyright,
     date,
