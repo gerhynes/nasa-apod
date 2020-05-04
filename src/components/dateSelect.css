@@ -1,13 +1,13 @@
-.DatePicker {
+.DateSelect {
   margin-bottom: 2.5rem;
 }
 
-.DatePicker-title {
+.DateSelect-title {
   display: inline;
   margin-right: 1rem;
 }
 
-.datepicker-input-btn {
+.DateSelect-input-btn {
   cursor: pointer;
   display: inline-flex;
   align-items: center;
