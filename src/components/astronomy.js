@@ -12,30 +12,35 @@ export default function Astronomy() {
   const [mediaUrl, setMediaUrl] = useState("")
   const [mediaType, setMediaType] = useState("")
   const [startDate, setStartDate] = useState(new Date())
+  const [errorMsg, setErrorMsg] = useState("")
   const searchDate = format(startDate, "yyyy-MM-dd")
 
   const printDate = date => date.split("-").reverse().join("-")
 
   useEffect(() => {
     const fetchMedia = async () => {
-      const result = await axios.get(
-        `https://api.nasa.gov/planetary/apod?api_key=TrOS4UtSVKBOtq0fzZL5PBrjUdtB4oDbgt5DFDdc&date=${searchDate}`
-      )
-      const {
-        copyright,
-        date,
-        explanation,
-        title,
-        url,
-        media_type,
-      } = result.data
+      try {
+        const result = await axios.get(
+          `https://api.nasa.gov/planetary/apod?api_key=TrOS4UtSVKBOtq0fzZL5PBrjUdtB4oDbgt5DFDdc&date=${searchDate}`
+        )
+        const {
+          copyright,
+          date,
+          explanation,
+          title,
+          url,
+          media_type,
+        } = result.data
 
-      setCopyright(copyright)
-      setDate(date)
-      setExplanation(explanation)
-      setTitle(title)
-      setMediaUrl(url)
-      setMediaType(media_type)
+        setCopyright(copyright)
+        setDate(date)
+        setExplanation(explanation)
+        setTitle(title)
+        setMediaUrl(url)
+        setMediaType(media_type)
+      } catch (error) {
+        setErrorMsg(error.response.data.msg)
+      }
     }
     fetchMedia()
   }, [
@@ -49,26 +54,37 @@ export default function Astronomy() {
     searchDate,
   ])
 
-  return (
-    <div className="Astronomy">
-      <DateSelect
-        startDate={startDate}
-        selectDate={newDate => setStartDate(newDate)}
-      />
-      <h2>
-        The image for {printDate(date)} is {title}
-      </h2>
-      {mediaType === "video" ? (
-        <Video videoSrcURL={mediaUrl} videoTitle={title} />
-      ) : (
-        <img src={mediaUrl} alt={title} />
-      )}
-      <h4>
-        <span>{copyright}</span>
-        {` `}
-        <span>{printDate(date)}</span>
-      </h4>
-      <p>{explanation}</p>
-    </div>
-  )
+  if (errorMsg) {
+    return (
+      <div>
+        <h1>Sorry. {errorMsg}</h1>
+        <a href="/">
+          <h2>Try again?</h2>
+        </a>
+      </div>
+    )
+  } else {
+    return (
+      <div className="Astronomy">
+        <DateSelect
+          startDate={startDate}
+          selectDate={newDate => setStartDate(newDate)}
+        />
+        <h2>
+          The image for {printDate(date)} is {title}
+        </h2>
+        {mediaType === "video" ? (
+          <Video videoSrcURL={mediaUrl} videoTitle={title} />
+        ) : (
+          <img src={mediaUrl} alt={title} />
+        )}
+        <h4>
+          <span>{copyright}</span>
+          {` `}
+          <span>{printDate(date)}</span>
+        </h4>
+        <p>{explanation}</p>
+      </div>
+    )
+  }
 }
