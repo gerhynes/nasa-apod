@@ -75,10 +75,14 @@ export default function Astronomy() {
           The image for {printDate(date) || <Skeleton width={100} />} is{" "}
           {title || <Skeleton />}
         </h2>
-        {mediaType === "video" ? (
-          <Video videoSrcURL={mediaUrl} videoTitle={title} />
+        {mediaType ? (
+          mediaType === "video" ? (
+            <Video videoSrcURL={mediaUrl} videoTitle={title} />
+          ) : (
+            <img src={mediaUrl} alt={title} width="920" height="500" />
+          )
         ) : (
-          <img src={mediaUrl} alt={title} />
+          <Skeleton height={500} />
         )}
         <h4>
           <span>{copyright || <Skeleton width={100} />}</span>
