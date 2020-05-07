@@ -3,6 +3,7 @@ import DateSelect from "../components/dateSelect"
 import Video from "../components/video"
 import axios from "axios"
 import { format } from "date-fns"
+import Skeleton from "react-loading-skeleton"
 
 export default function Astronomy() {
   const [copyright, setCopyright] = useState("")
@@ -71,7 +72,8 @@ export default function Astronomy() {
           selectDate={newDate => setStartDate(newDate)}
         />
         <h2>
-          The image for {printDate(date)} is {title}
+          The image for {printDate(date) || <Skeleton width={100} />} is{" "}
+          {title || <Skeleton />}
         </h2>
         {mediaType === "video" ? (
           <Video videoSrcURL={mediaUrl} videoTitle={title} />
@@ -79,11 +81,11 @@ export default function Astronomy() {
           <img src={mediaUrl} alt={title} />
         )}
         <h4>
-          <span>{copyright}</span>
+          <span>{copyright || <Skeleton width={100} />}</span>
           {` `}
-          <span>{printDate(date)}</span>
+          <span>{printDate(date) || <Skeleton width={100} />}</span>
         </h4>
-        <p>{explanation}</p>
+        <p>{explanation || <Skeleton count={10} />}</p>
       </div>
     )
   }
