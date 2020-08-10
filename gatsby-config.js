@@ -21,8 +21,8 @@ module.exports = {
         name: `NASA APOD`,
         short_name: `NASA APOD`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#1a202c`,
+        theme_color: `#1a202c`,
         display: `minimal-ui`,
         icon: `src/images/nasa-logo.png`, // This path is relative to the root of the site.
       },
