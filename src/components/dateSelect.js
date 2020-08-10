@@ -6,7 +6,7 @@ import "./dateSelect.css"
 export default function DateSelect({ startDate, selectDate }) {
   return (
     <div className="DateSelect">
-      <h3 className="DateSelect-title">Choose a date</h3>
+      <h2 className="DateSelect-title">Choose a date</h2>
       <DatePicker
         dateFormat="dd/MM/yyyy"
         selected={startDate}

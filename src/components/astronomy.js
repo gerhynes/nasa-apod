@@ -4,6 +4,7 @@ import Video from "../components/video"
 import axios from "axios"
 import { format } from "date-fns"
 import Skeleton from "react-loading-skeleton"
+import "./astronomy.css"
 
 export default function Astronomy() {
   const [copyright, setCopyright] = useState("")
@@ -84,12 +85,14 @@ export default function Astronomy() {
         ) : (
           <Skeleton height={500} />
         )}
-        <h4>
+        <h3 className="Astronomy-copyright">
           <span>{copyright || <Skeleton width={100} />}</span>
           {` `}
           <span>{printDate(date) || <Skeleton width={100} />}</span>
-        </h4>
-        <p>{explanation || <Skeleton count={10} />}</p>
+        </h3>
+        <p className="Astronomy-explanation">
+          {explanation || <Skeleton count={10} />}
+        </p>
       </div>
     )
   }

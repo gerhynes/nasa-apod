@@ -5,6 +5,7 @@
 .DateSelect-title {
   display: inline;
   margin-right: 1rem;
+  font-size: 1.38316rem;
 }
 
 .DateSelect-input-btn {
@@ -14,9 +15,9 @@
   height: 52px;
   padding-left: 1rem;
   padding-right: 1rem;
-  border: 1px solid #2c4099;
+  border: 1px solid #105bd8;
   border-radius: 4px;
-  background-color: #2c4099;
+  background-color: #105bd8;
   font: inherit;
   font-weight: 700;
   color: #fff;
