@@ -1,11 +1,12 @@
 .DateSelect {
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.5rem;
 }
 
-.DateSelect-title {
+.DateSelect__title {
   display: inline;
   margin-right: 1rem;
-  font-size: 1.38316rem;
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 
 .DateSelect-input-btn {

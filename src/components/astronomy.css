@@ -1,8 +1,29 @@
-.Astronomy-copyright {
-  font-size: 1rem;
+.Astronomy__title {
+  font-weight: 600;
+  margin-bottom: 1.5rem;
 }
 
-.Astronomy-explanation {
-  font-weight: 400;
-  line-height: 1.625;
+.Astronomy__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-bottom: 1.5rem;
+}
+
+.Astronomy__copyright {
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.Astronomy__explanation {
+  max-width: 765px;
+  line-height: 1.75;
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.025em;
+}
+
+.Astronomy__error-message {
+  font-weight: 600;
 }

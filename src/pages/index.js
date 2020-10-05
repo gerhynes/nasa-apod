@@ -9,10 +9,6 @@ const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
     <Astronomy />
-    <p>
-      All data is drawn from{" "}
-      <a href="https://api.nasa.gov/">NASA's APOD API.</a>
-    </p>
   </Layout>
 )
 

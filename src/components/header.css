@@ -1,0 +1,12 @@
+.Header {
+  max-width: 960px;
+  margin: 0 auto 1.5rem auto;
+  padding: 1rem 1.5rem 0 1.5rem;
+}
+
+.Header__title {
+  color: #fff;
+  text-decoration: none;
+  font-family: inherit;
+  font-size: 2.5rem;
+}
