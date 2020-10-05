@@ -1,31 +1,35 @@
-import React, { useState, useEffect } from "react"
-import DateSelect from "../components/dateSelect"
-import Video from "../components/video"
-import axios from "axios"
-import { format } from "date-fns"
-import Skeleton from "react-loading-skeleton"
-import "./astronomy.css"
+import React, { useState, useEffect } from "react";
+import DateSelect from "../components/dateSelect";
+import Video from "../components/video";
+import axios from "axios";
+import { format } from "date-fns";
+import Skeleton from "react-loading-skeleton";
+import "./astronomy.css";
 
-const printDate = date => date.split("-").reverse().join("-")
+const printDate = date => date.split("-").reverse().join("-");
 
 export default function Astronomy() {
-  const [copyright, setCopyright] = useState("")
-  const [date, setDate] = useState("")
-  const [explanation, setExplanation] = useState("")
-  const [title, setTitle] = useState("")
-  const [mediaUrl, setMediaUrl] = useState("")
-  const [mediaType, setMediaType] = useState("")
-  const [startDate, setStartDate] = useState(new Date())
-  const [errorMsg, setErrorMsg] = useState("")
-  const searchDate = format(startDate, "yyyy-MM-dd")
+  const [nasaData, setNasaData] = useState({
+    copyright: "",
+    date: "",
+    explanation: "",
+    title: "",
+    mediaUrl: "",
+    mediaType: "",
+  });
+
+  // Set current date
+  const [startDate, setStartDate] = useState(new Date());
+  const [errorMsg, setErrorMsg] = useState("");
+  // Format searchDate for NASA's API conventions
+  const searchDate = format(startDate, "yyyy-MM-dd");
 
   useEffect(() => {
-    console.log("running")
     const fetchMedia = async () => {
       try {
         const result = await axios.get(
           `https://api.nasa.gov/planetary/apod?api_key=TrOS4UtSVKBOtq0fzZL5PBrjUdtB4oDbgt5DFDdc&date=${searchDate}`
-        )
+        );
         const {
           copyright,
           date,
@@ -33,20 +37,22 @@ export default function Astronomy() {
           title,
           url,
           media_type,
-        } = result.data
+        } = result.data;
 
-        setErrorMsg("")
-        setCopyright(copyright)
-        setDate(date)
-        setExplanation(explanation)
-        setTitle(title)
-        setMediaUrl(url)
-        setMediaType(media_type)
+        setErrorMsg("");
+        setNasaData({
+          copyright: copyright,
+          date: date,
+          explanation: explanation,
+          title: title,
+          mediaUrl: url,
+          mediaType: media_type,
+        });
       } catch (error) {
-        setErrorMsg(error.response.data.msg)
+        setErrorMsg(error.response.data.msg);
       }
-    }
-    fetchMedia()
+    };
+    fetchMedia();
   }, [
     copyright,
     date,
@@ -56,7 +62,9 @@ export default function Astronomy() {
     mediaType,
     startDate,
     searchDate,
-  ])
+  ]);
+
+  const { copyright, date, explanation, title, mediaUrl, mediaType } = nasaData;
 
   return (
     <div className="Astronomy">
@@ -110,5 +118,5 @@ export default function Astronomy() {
         </>
       )}
     </div>
-  )
+  );
 }
