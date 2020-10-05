@@ -6,6 +6,8 @@ import { format } from "date-fns"
 import Skeleton from "react-loading-skeleton"
 import "./astronomy.css"
 
+const printDate = date => date.split("-").reverse().join("-")
+
 export default function Astronomy() {
   const [copyright, setCopyright] = useState("")
   const [date, setDate] = useState("")
@@ -17,9 +19,8 @@ export default function Astronomy() {
   const [errorMsg, setErrorMsg] = useState("")
   const searchDate = format(startDate, "yyyy-MM-dd")
 
-  const printDate = date => date.split("-").reverse().join("-")
-
   useEffect(() => {
+    console.log("running")
     const fetchMedia = async () => {
       try {
         const result = await axios.get(
@@ -34,6 +35,7 @@ export default function Astronomy() {
           media_type,
         } = result.data
 
+        setErrorMsg("")
         setCopyright(copyright)
         setDate(date)
         setExplanation(explanation)
@@ -56,44 +58,57 @@ export default function Astronomy() {
     searchDate,
   ])
 
-  if (errorMsg) {
-    return (
-      <div>
-        <h1>Sorry. {errorMsg}</h1>
-        <a href="/">
-          <h2>Try again?</h2>
-        </a>
-      </div>
-    )
-  } else {
-    return (
-      <div className="Astronomy">
-        <DateSelect
-          startDate={startDate}
-          selectDate={newDate => setStartDate(newDate)}
-        />
-        <h2>
-          The image for {printDate(date) || <Skeleton width={100} />} is{" "}
-          {title || <Skeleton />}
-        </h2>
-        {mediaType ? (
-          mediaType === "video" ? (
-            <Video videoSrcURL={mediaUrl} videoTitle={title} />
+  return (
+    <div className="Astronomy">
+      <DateSelect
+        startDate={startDate}
+        selectDate={newDate => setStartDate(newDate)}
+      />
+      {errorMsg ? (
+        <div>
+          <h2 className="Astronomy__error-message">
+            Sorry. {errorMsg} Try another date?
+          </h2>
+        </div>
+      ) : (
+        <>
+          <h2 className="Astronomy__title">
+            The image for {printDate(date) || <Skeleton width={100} />} is{" "}
+            {title || <Skeleton />}
+          </h2>
+          {mediaType ? (
+            mediaType === "video" ? (
+              <Video videoSrcURL={mediaUrl} videoTitle={title} />
+            ) : (
+              <img
+                className="Astronomy__image"
+                src={mediaUrl}
+                alt={title}
+                width="920"
+                height="500"
+              />
+            )
           ) : (
-            <img src={mediaUrl} alt={title} width="920" height="500" />
-          )
-        ) : (
-          <Skeleton height={500} />
-        )}
-        <h3 className="Astronomy-copyright">
-          <span>{copyright || <Skeleton width={100} />}</span>
-          {` `}
-          <span>{printDate(date) || <Skeleton width={100} />}</span>
-        </h3>
-        <p className="Astronomy-explanation">
-          {explanation || <Skeleton count={10} />}
-        </p>
-      </div>
-    )
-  }
+            <Skeleton height={500} />
+          )}
+          <h3 className="Astronomy__copyright">
+            <span>
+              {copyright || (
+                <span style={{ height: `1rem`, width: `100px` }}></span>
+              )}
+            </span>
+            {` `}
+            <span>{printDate(date) || <Skeleton width={100} />}</span>
+          </h3>
+          <p className="Astronomy__explanation">
+            {explanation || <Skeleton count={10} />}
+          </p>
+          <p className="Astronomy__explanation">
+            All data is drawn from{" "}
+            <a href="https://api.nasa.gov/">NASA's APOD API.</a>
+          </p>
+        </>
+      )}
+    </div>
+  )
 }
