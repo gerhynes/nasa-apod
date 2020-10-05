@@ -1,5 +1,5 @@
-import React from "react"
-import "./video.css"
+import React from "react";
+import "./video.css";
 
 const Video = ({ videoSrcURL, videoTitle }) => (
   <div className="Video">
@@ -13,5 +13,5 @@ const Video = ({ videoSrcURL, videoTitle }) => (
       allowFullScreen
     />
   </div>
-)
-export default Video
+);
+export default Video;

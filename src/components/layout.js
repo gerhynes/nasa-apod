@@ -1,10 +1,10 @@
-import React from "react"
-import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
-import "typeface-source-sans-pro"
-import Header from "./header"
-import "normalize.css"
-import "./layout.css"
+import React from "react";
+import PropTypes from "prop-types";
+import { useStaticQuery, graphql } from "gatsby";
+import "typeface-source-sans-pro";
+import Header from "./header";
+import "normalize.css";
+import "./layout.css";
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -15,7 +15,7 @@ const Layout = ({ children }) => {
         }
       }
     }
-  `)
+  `);
 
   return (
     <>
@@ -33,11 +33,11 @@ const Layout = ({ children }) => {
         <a href="https://github.com/GK-Hynes">Gerard Hynes</a>
       </footer>
     </>
-  )
-}
+  );
+};
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-}
+};
 
-export default Layout
+export default Layout;
