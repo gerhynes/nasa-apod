@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import DateSelect from "../components/dateSelect";
 import Video from "../components/video";
-import axios from "axios";
 import { format } from "date-fns";
 import Skeleton from "react-loading-skeleton";
 import "./astronomy.css";
@@ -27,17 +26,16 @@ export default function Astronomy() {
   useEffect(() => {
     const fetchMedia = async () => {
       try {
-        const result = await axios.get(
+        // const result = await axios.get(
+        //   `https://api.nasa.gov/planetary/apod?api_key=TrOS4UtSVKBOtq0fzZL5PBrjUdtB4oDbgt5DFDdc&date=${searchDate}`
+        // );
+
+        let response = await fetch(
           `https://api.nasa.gov/planetary/apod?api_key=TrOS4UtSVKBOtq0fzZL5PBrjUdtB4oDbgt5DFDdc&date=${searchDate}`
         );
-        const {
-          copyright,
-          date,
-          explanation,
-          title,
-          url,
-          media_type,
-        } = result.data;
+        let data = await response.json();
+
+        const { copyright, date, explanation, title, url, media_type } = data;
 
         setErrorMsg("");
         setNasaData({
@@ -74,9 +72,9 @@ export default function Astronomy() {
       />
       {errorMsg ? (
         <div>
-          <h2 className="Astronomy__error-message">
+          <div className="Astronomy__error-message">
             Sorry. {errorMsg} Try another date?
-          </h2>
+          </div>
         </div>
       ) : (
         <>
@@ -99,22 +97,24 @@ export default function Astronomy() {
           ) : (
             <Skeleton height={500} />
           )}
-          <h3 className="Astronomy__copyright">
-            <span>
-              {copyright || (
-                <span style={{ height: `1rem`, width: `100px` }}></span>
-              )}
-            </span>
-            {` `}
-            <span>{printDate(date) || <Skeleton width={100} />}</span>
-          </h3>
-          <p className="Astronomy__explanation">
-            {explanation || <Skeleton count={10} />}
-          </p>
-          <p className="Astronomy__explanation">
-            All data is drawn from{" "}
-            <a href="https://api.nasa.gov/">NASA's APOD API.</a>
-          </p>
+          <div className="Astronomy__copy">
+            <h3 className="Astronomy__copyright">
+              <span>
+                {copyright || (
+                  <span style={{ height: `1rem`, width: `100px` }}></span>
+                )}
+              </span>
+              {` `}
+              <span>{printDate(date) || <Skeleton width={100} />}</span>
+            </h3>
+            <p className="Astronomy__explanation">
+              {explanation || <Skeleton count={10} />}
+            </p>
+            <p className="Astronomy__explanation">
+              All data is drawn from{" "}
+              <a href="https://api.nasa.gov/">NASA's APOD API.</a>
+            </p>
+          </div>
         </>
       )}
     </div>

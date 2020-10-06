@@ -10,6 +10,11 @@
   margin-bottom: 1.5rem;
 }
 
+.Astronomy__copy {
+  max-width: 750px;
+  margin: 0 auto;
+}
+
 .Astronomy__copyright {
   font-size: 1.25rem;
   margin-bottom: 1.5rem;
@@ -17,7 +22,6 @@
 }
 
 .Astronomy__explanation {
-  max-width: 765px;
   line-height: 1.75;
   font-size: 1.25rem;
   margin-bottom: 1.5rem;
