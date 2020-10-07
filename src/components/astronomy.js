@@ -91,22 +91,24 @@ export default function Astronomy() {
           ) : (
             <Skeleton height={500} />
           )}
-          <h3 className="Astronomy__copyright">
-            <span>
-              {copyright || (
-                <span style={{ height: `1rem`, width: `100px` }}></span>
-              )}
-            </span>
-            {` `}
-            <span>{printDate(date) || <Skeleton width={100} />}</span>
-          </h3>
-          <p className="Astronomy__explanation">
-            {explanation || <Skeleton count={10} />}
-          </p>
-          <p className="Astronomy__explanation">
-            All data is drawn from{" "}
-            <a href="https://api.nasa.gov/">NASA's APOD API.</a>
-          </p>
+          <div className="Astronomy__copy">
+            <h3 className="Astronomy__copyright">
+              <span>
+                {copyright || (
+                  <span style={{ height: `1rem`, width: `100px` }}></span>
+                )}
+              </span>
+              {` `}
+              <span>{printDate(date) || <Skeleton width={100} />}</span>
+            </h3>
+            <p className="Astronomy__explanation">
+              {explanation || <Skeleton count={10} />}
+            </p>
+            <p className="Astronomy__explanation">
+              All data is drawn from{" "}
+              <a href="https://api.nasa.gov/">NASA's APOD API.</a>
+            </p>
+          </div>
         </>
       )}
     </div>
