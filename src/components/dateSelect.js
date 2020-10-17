@@ -1,5 +1,6 @@
 import React from "react";
 import DatePicker from "react-datepicker";
+import PropTypes from "prop-types";
 import "react-datepicker/dist/react-datepicker.css";
 import "./dateSelect.css";
 
@@ -22,3 +23,22 @@ const DateSelectInput = ({ value, onClick }) => (
     {value}
   </button>
 );
+
+DateSelect.propTypes = {
+  startDate: PropTypes.string,
+  selectDate: PropTypes.string,
+};
+
+DateSelect.defaultProps = {
+  startDate: ``,
+  selectDate: ``,
+};
+
+DateSelectInput.propTypes = {
+  value: PropTypes.string,
+  onClick: PropTypes.func,
+};
+
+DateSelectInput.defaultProps = {
+  value: ``,
+};
