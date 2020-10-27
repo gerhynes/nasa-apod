@@ -1,0 +1,63 @@
+.Skeleton-wrapper {
+  position: relative;
+}
+
+.Skeleton {
+  background: #ddd;
+  border-radius: 0.25rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.Skeleton.heading {
+  width: 50%;
+  height: 2rem;
+  margin-bottom: 1rem;
+}
+
+.Skeleton.media {
+  width: 100%;
+  height: 300px;
+  margin-bottom: 1rem;
+}
+
+.Skeleton.text {
+  width: 100%;
+  height: 1rem;
+  margin-bottom: 1rem;
+}
+
+.Skeleton.small {
+  width: 50%;
+  height: 1rem;
+  margin-bottom: 1rem;
+}
+
+.shimmer-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  animation: loading 0.5s infinite;
+}
+
+.shimmer {
+  width: 50%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: skewX(-20deg);
+  box-shadow: 0 0 30px 30px rgba(255, 255, 255, 0.05);
+}
+
+@keyframes loading {
+  0% {
+    transform: translateX(-150%);
+  }
+  50% {
+    transform: translateX(-60%);
+  }
+  100% {
+    transform: translateX(150%);
+  }
+}

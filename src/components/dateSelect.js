@@ -26,7 +26,7 @@ const DateSelectInput = ({ value, onClick }) => (
 
 DateSelect.propTypes = {
   startDate: PropTypes.string,
-  selectDate: PropTypes.string,
+  selectDate: PropTypes.func,
 };
 
 DateSelect.defaultProps = {
