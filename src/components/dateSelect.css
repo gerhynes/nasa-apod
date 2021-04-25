@@ -9,18 +9,26 @@
   font-weight: 600;
 }
 
-.DateSelect-input-btn {
+.DateSelect__input-btn {
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   height: 52px;
   padding-left: 1rem;
   padding-right: 1rem;
-  border: 1px solid #105bd8;
+  border: 1px solid #2563eb;
   border-radius: 4px;
-  background-color: #105bd8;
+  background-color: #2563eb;
   font: inherit;
   font-weight: 700;
   color: #fff;
   line-height: 1;
+}
+
+.DateSelect__input-btn:hover {
+  background-color: #1e40af;
+}
+
+.DateSelect__input-btn:focus {
+  outline: 3px solid #eff6ff;
 }

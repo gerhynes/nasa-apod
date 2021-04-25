@@ -24,11 +24,7 @@ const Layout = ({ children }) => {
         <main>{children}</main>
       </div>
       <footer className="footer">
-        Built with
-        {` `}
-        <a href="https://www.gatsbyjs.com">Gatsby</a>
-        {` `}
-        by
+        Built by
         {` `}
         <a href="https://github.com/GK-Hynes">Gerard Hynes</a>
       </footer>

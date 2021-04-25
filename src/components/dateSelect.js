@@ -19,7 +19,7 @@ export default function DateSelect({ startDate, selectDate }) {
 }
 
 const DateSelectInput = ({ value, onClick }) => (
-  <button className="DateSelect-input-btn" onClick={onClick}>
+  <button className="DateSelect__input-btn" onClick={onClick}>
     {value}
   </button>
 );

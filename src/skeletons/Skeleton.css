@@ -39,7 +39,7 @@
   left: 0;
   height: 100%;
   width: 100%;
-  animation: loading 0.5s infinite;
+  animation: loading 2s infinite;
 }
 
 .shimmer {
