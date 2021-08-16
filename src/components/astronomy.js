@@ -18,17 +18,17 @@ export default function Astronomy() {
     mediaUrl: "",
     mediaType: "",
   });
-  // Set current date
+  // Set default date to current date
   const [startDate, setStartDate] = useState(new Date());
   // Format searchDate to NASA's API conventions
   const searchDate = format(startDate, "yyyy-MM-dd");
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
 
   useEffect(() => {
     const fetchMedia = async () => {
       try {
-        setLoading(true);
+        setIsLoading(true);
         const response = await axios.get(
           `https://api.nasa.gov/planetary/apod?api_key=TrOS4UtSVKBOtq0fzZL5PBrjUdtB4oDbgt5DFDdc&date=${searchDate}`
         );
@@ -44,17 +44,17 @@ export default function Astronomy() {
 
         setErrorMsg("");
         setNasaData({
-          copyright: copyright,
-          date: date,
-          explanation: explanation,
-          title: title,
+          copyright,
+          date,
+          explanation,
+          title,
           mediaUrl: url,
           mediaType: media_type,
         });
-        setLoading(false);
+        setIsLoading(false);
       } catch (error) {
         setErrorMsg(error.response.data.msg);
-        setLoading(false);
+        setIsLoading(false);
       }
     };
     fetchMedia();
@@ -75,7 +75,7 @@ export default function Astronomy() {
           </h2>
         </div>
       ) : null}
-      {loading ? (
+      {isLoading ? (
         <div>
           <Skeleton type="heading" />
           <Skeleton type="media" />

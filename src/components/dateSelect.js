@@ -25,12 +25,12 @@ const DateSelectInput = ({ value, onClick }) => (
 );
 
 DateSelect.propTypes = {
-  startDate: PropTypes.string,
+  startDate: PropTypes.instanceOf(Date),
   selectDate: PropTypes.func,
 };
 
 DateSelect.defaultProps = {
-  startDate: ``,
+  startDate: new Date(),
   selectDate: ``,
 };
 
