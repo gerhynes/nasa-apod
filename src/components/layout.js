@@ -26,7 +26,7 @@ const Layout = ({ children }) => {
       <footer className="footer">
         Built by
         {` `}
-        <a href="https://github.com/GK-Hynes">Gerard Hynes</a>
+        <a href="https://github.com/gerhynes">Gerard Hynes</a>
       </footer>
     </>
   );
